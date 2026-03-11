@@ -1,21 +1,21 @@
-const button = document.getElementById("calculateBtn");
+function calculateBudget() {
+    let income = document.getElementById("income").value;
 
-button.addEventListener("click", function(){
+    if (income === "" || income <= 0) {
+        document.getElementById("result").innerHTML = "Please enter a valid income.";
+        return;
+    }
 
-let income = document.getElementById("income").value;
-income = Number(income);
+    income = Number(income);
 
-let essentials = income * 0.5;
-let nonEssentials = income * 0.3;
-let savings = income * 0.2;
+    let needs = income * 0.50;
+    let nonEssential = income * 0.30;
+    let savings = income * 0.20;
 
-document.getElementById("essentials").innerText =
-"Essential Expenses (50%): Rp " + essentials.toLocaleString();
-
-document.getElementById("nonEssentials").innerText =
-"Non-Essential Expenses (30%): Rp " + nonEssentials.toLocaleString();
-
-document.getElementById("savings").innerText =
-"Savings (20%): Rp " + savings.toLocaleString();
-
-});
+    document.getElementById("result").innerHTML = `
+        <h3>Budget Breakdown</h3>
+        <p>Needs / Essential Expenses (50%): $${needs.toFixed(2)}</p>
+        <p>Non-Essential Expenses (30%): $${nonEssential.toFixed(2)}</p>
+        <p>Savings (20%): $${savings.toFixed(2)}</p>
+    `;
+} 
